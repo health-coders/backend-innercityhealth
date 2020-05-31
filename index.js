@@ -15,6 +15,9 @@ app.use(function (req, res, next) {
 
 //importar rutas
 var usuariosRoutes = require("./Rutas/usuarios");
+var serviciosRoutes = require("./Rutas/servicios");
+var transportesRoutes = require("./Rutas/transportes");
+var loginRoutes = require("./Rutas/login");
 
 //body parser
 app.use(bodyParser.urlencoded({extended:true}))
@@ -22,6 +25,9 @@ app.use(bodyParser.json())
 
 //rutas
 app.use('/usuarios', usuariosRoutes);
+app.use('/servicios', serviciosRoutes);
+app.use('/transportes', transportesRoutes);
+app.use('/login', loginRoutes);
 
 //escuchar peticiones
 app.listen(3001, ()=>{
