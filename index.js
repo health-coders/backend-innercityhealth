@@ -3,6 +3,10 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+port = process.env.PORT || 80
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () =>  console.log(`-----Puerto : ${PORT}\x1b[32m%s\x1b[0m`, ' online', '-----'));
+
 //cors
 app.use(function (req, res, next) {
 
@@ -28,11 +32,3 @@ app.use('/usuarios', usuariosRoutes);
 app.use('/servicios', serviciosRoutes);
 app.use('/transportes', transportesRoutes);
 app.use('/login', loginRoutes);
-
-//escuchar peticiones
-app.set('puerto',  3001);
-console.log(app.get('puerto'));
-
-app.listen(app.get('puerto'), () => {
-    console.log(`-----Puerto : ${app.get('puerto')}\x1b[32m%s\x1b[0m`, ' online', '-----');
-});
