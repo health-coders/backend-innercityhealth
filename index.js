@@ -20,7 +20,7 @@ var transportesRoutes = require("./Rutas/transportes");
 var loginRoutes = require("./Rutas/login");
 
 //body parser
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 //rutas
@@ -30,6 +30,9 @@ app.use('/transportes', transportesRoutes);
 app.use('/login', loginRoutes);
 
 //escuchar peticiones
-app.listen(3001, ()=>{
-    console.log('-----Puerto 3001: \x1b[32m%s\x1b[0m', 'online', '-----');
+app.set('puerto', process.env.RDS_PORT || 3001);
+console.log(app.get('puerto'));
+
+app.listen(app.get('puerto'), () => {
+    console.log(`-----Puerto : ${port}\x1b[32m%s\x1b[0m`, ' online', '-----');
 });
