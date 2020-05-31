@@ -61,8 +61,9 @@ Router.put("/:id", (req, res) => {
 
 Router.get("/:id", (req, res) => {
 
-    var servicio = req.body;
-    return conexion.query(`SELECT * FROM innercityhealth.tbl_servicio WHERE id = '${servicio.id}'`, 
+    const { id } = req.params;
+    
+    return conexion.query(`SELECT * FROM innercityhealth.tbl_servicio WHERE id = '${id}'`, 
         (err, filas, campos) => {
             if(!err) {
                 res.send(filas);
@@ -78,8 +79,9 @@ Router.get("/:id", (req, res) => {
 
 Router.get("/historial/:id", (req, res) => {
 
-    var servicio = req.body;
-    return conexion.query(`SELECT * FROM innercityhealth.tbl_service_history WHERE id_servicio = '${servicio.id}'`, 
+    const { id } = req.params;
+
+    return conexion.query(`SELECT * FROM innercityhealth.tbl_service_history WHERE id_servicio = '${id}'`, 
         (err, filas, campos) => {
             if(!err) {
                 res.send(filas);
