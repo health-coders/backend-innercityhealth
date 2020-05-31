@@ -57,7 +57,7 @@ Router.get("/estadoServicio", (req, res) => {
                 res.status(400).json({
                     ok: false,
                     mensaje: "Error al listar estados de servicio",
-                    errors: err;
+                    errors: err
                 });
             }
         });

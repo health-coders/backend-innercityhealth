@@ -24,8 +24,7 @@ var usuariosRoutes = require("./Rutas/usuarios");
 var serviciosRoutes = require("./Rutas/servicios");
 var transportesRoutes = require("./Rutas/transportes");
 var loginRoutes = require("./Rutas/login");
-var tiposUsuarioRoutes = require("./Rutas/tipos_usuario");
-var aseguradorasRoutes = require("./Rutas/aseguradoras");
+var genericosRoutes = require("./Rutas/genericos");
 
 //body parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,5 +35,4 @@ app.use('/usuarios', usuariosRoutes);
 app.use('/servicios', serviciosRoutes);
 app.use('/transportes', transportesRoutes);
 app.use('/login', loginRoutes);
-app.use('/tipos', tiposUsuarioRoutes);
-app.use('/aseguradoras', aseguradorasRoutes);
+app.use('/', genericosRoutes);
