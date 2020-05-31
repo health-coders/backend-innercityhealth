@@ -13,9 +13,15 @@ app.use(function (req, res, next) {
     next();
 });
 
+//importar rutas
+var usuariosRoutes = require("./Rutas/usuarios");
+
 //body parser
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
+
+//rutas
+app.use('/usuarios', usuariosRoutes);
 
 //escuchar peticiones
 app.listen(3001, ()=>{
