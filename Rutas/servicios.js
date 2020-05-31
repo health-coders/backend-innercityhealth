@@ -3,8 +3,11 @@ const conexion = require("../Configuraciones/ConexionDB");
 
 const Router = express.Router();
 
-Router.get("/", (req, res) => {
-    return conexion.query("select * from innercityhealth.tbl_servicio",
+Router.get("/:id", (req, res) => {
+
+    const { id } = req.params;
+
+    return conexion.query(`select * from innercityhealth.tbl_servicio where solicitante = '${id}'`,
         (err, filas, campos) => {
             if (!err) {
                 res.send(filas);

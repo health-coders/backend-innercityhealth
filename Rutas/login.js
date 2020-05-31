@@ -17,10 +17,14 @@ Router.get("/", (req, res) => {
                     errors: err
                 });
             } else {
-                if (Object.keys(resp).length===0) {
+                if (Object.keys(resp).length === 0) {
                     console.log('Credenciales incorrectas');
                 } else {
-                    console.log('logeado');
+                    res.status(400).json({
+                        ok: false,
+                        mensaje: 'Logeado correctamente',
+                        usuario: resp
+                    });
                 }
             }
         })
