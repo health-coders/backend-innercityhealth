@@ -28,8 +28,8 @@ var tiposUsuarioRoutes = require("./Rutas/tipos_usuario");
 var aseguradorasRoutes = require("./Rutas/aseguradoras");
 
 //body parser
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //rutas
 app.use('/usuarios', usuariosRoutes);
