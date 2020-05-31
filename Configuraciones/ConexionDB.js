@@ -21,4 +21,11 @@ conexion.connect(function (error) {
     console.log('Estado de la conexion: ' + conexion.state);
 });
 
+// conexion.get("/", (req, res) => {
+//     return conexion.query("select * from innercityhealth.tbl_tipo_usuario",
+//         (err, filas, campos) => {
+//             res.send(filas);
+//         });
+// });
+
 module.exports = conexion;

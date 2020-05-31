@@ -30,9 +30,9 @@ app.use('/transportes', transportesRoutes);
 app.use('/login', loginRoutes);
 
 //escuchar peticiones
-app.set('puerto', process.env.RDS_PORT || 3001);
+app.set('puerto',  3001);
 console.log(app.get('puerto'));
 
 app.listen(app.get('puerto'), () => {
-    console.log(`-----Puerto : ${port}\x1b[32m%s\x1b[0m`, ' online', '-----');
+    console.log(`-----Puerto : ${app.get('puerto')}\x1b[32m%s\x1b[0m`, ' online', '-----');
 });

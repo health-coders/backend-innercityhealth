@@ -3,19 +3,19 @@ const conexion = require("../Configuraciones/ConexionDB");
 
 const Router = express.Router();
 
-Router.get("/", (req, res)=>{
+Router.get("/", (req, res) => {
     return conexion.query("select * from innercityhealth.tbl_usuario",
-    (err, filas, campos)=>{
-        if (!err) { 
-            res.send(filas); 
-        } else {
-            res.status(400).json({
-                ok: false,
-                mensaje: 'error al listar usuarios',
-                errors: err
-            });
-        }
-    });
+        (err, filas, campos) => {
+            if (!err) {
+                res.send(filas);
+            } else {
+                res.status(400).json({
+                    ok: false,
+                    mensaje: 'error al listar usuarios',
+                    errors: err
+                });
+            }
+        });
 });
 
 Router.post("/", (req, res) => {
@@ -32,6 +32,7 @@ Router.post("/", (req, res) => {
         }
         res.status(201).json({
             ok: true,
+            usuario: usuario
         });
     })
 });
@@ -41,18 +42,20 @@ Router.put("/:id", (req, res) => {
     const { id } = req.params;
     var usuarioActual = req.body;
 
-    return conexion.query('UPDATE innercityhealth.tbl_usuario set ? where id_nacional = ?', [usuarioActual, id], (err, usuarioActualizado) => {
-        if (err) {
-            return res.status(400).json({
-                ok: false,
-                mensaje: 'error al actualizar usuarios',
-                errors: err
+    return conexion.query('UPDATE innercityhealth.tbl_usuario set ? where id_nacional = ?',
+        [usuarioActual, id], (err, usuarioActualizado) => {
+            if (err) {
+                return res.status(400).json({
+                    ok: false,
+                    mensaje: 'error al actualizar usuarios',
+                    errors: err
+                });
+            }
+            res.status(201).json({
+                ok: true,
+                usuario: usuarioActual
             });
-        }
-        res.status(201).json({
-            ok: true,
-        });
-    })
+        })
 });
 
 module.exports = Router;
