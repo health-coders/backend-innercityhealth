@@ -18,6 +18,22 @@ Router.get("/", (req, res) => {
         });
 });
 
+Router.get("/:id", (req, res) => {
+    var usuario = req.body;
+    return conexion.query(`select * from innercityhealth.tbl_usuario where id_nacional = '${usuario.id}'`,
+        (err, filas, campos) => {
+            if (!err) {
+                res.send(filas);
+            } else {
+                res.status(400).json({
+                    ok: false,
+                    mensaje: 'error al listar usuarios',
+                    errors: err
+                });
+            }
+        });
+});
+
 Router.post("/", (req, res) => {
 
     var usuarioNuevo = req.body;

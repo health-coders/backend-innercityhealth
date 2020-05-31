@@ -56,4 +56,38 @@ Router.put("/:id", (req, res) => {
         })
 });
 
+Router.get("/:id", (req, res) => {
+
+    var servicio = req.body;
+    return conexion.query(`SELECT * FROM innercityhealth.tbl_servicio WHERE id = '${servicio.id}'`, 
+        (err, filas, campos) => {
+            if(!err) {
+                res.send(filas);
+            } else {
+                res.status(400).json({
+                    ok: false,
+                    mensaje: "Error al consultar servicio",
+                    errors: err
+                });
+            }
+        });
+});
+
+Router.get("/historial/:id", (req, res) => {
+
+    var servicio = req.body;
+    return conexion.query(`SELECT * FROM innercityhealth.tbl_service_history WHERE id_servicio = '${servicio.id}'`, 
+        (err, filas, campos) => {
+            if(!err) {
+                res.send(filas);
+            } else {
+                res.status(400).json({
+                    ok: false,
+                    mensaje: "Error al consultar historial de servicio",
+                    errors: err
+                });
+            }
+        });
+});
+
 module.exports = Router;
